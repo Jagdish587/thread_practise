@@ -8,15 +8,6 @@
 #include <future>
 using namespace std;
 
-#if 0
-void my_thread_function(int val,string str)
-{
-	cout << "This is thread fiucntion \n";
-	cout << "int val = "<< val<<" string value = "<< str<<endl;
-
-}
-#endif
-
 void div_func(promise<int> promise_obj_div, int a, int b)
 {
 	promise_obj_div.set_value(b/a);
