@@ -1,4 +1,4 @@
-// thread_stuff.cpp : Defines the entry point for the console application.
+// thread_stuff.cpp : Jagdish Defines the entry point for the console application.
 //
 
 //#include "stdafx.h"
