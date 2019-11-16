@@ -8,14 +8,6 @@
 #include <future>
 using namespace std;
 
-#if 0
-void my_thread_function(int val,string str)
-{
-	cout << "This is thread fiucntion \n";
-	cout << "int val = "<< val<<" string value = "<< str<<endl;
-
-}
-#endif
 
 void div_func(promise<int> promise_obj_div, int a, int b)
 {
@@ -49,10 +41,6 @@ int main()
 	thread_1.join();
 	thread_2.join();
 
-#if 0
-	thread t1(my_thread_function,20,"jagdish");
-	t1.join();
-#endif
 
     return 0;
 }
