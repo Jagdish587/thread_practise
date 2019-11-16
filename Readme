@@ -1,0 +1,8 @@
+This is MUlti threading example .
+To make it compile from QT Creatot , add following lines 
+in your .pro file 
+
+QMAKE_CXXFLAGS += -std=c++0x -pthread 
+LIBS += -pthread
+
+
