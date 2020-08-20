@@ -79,25 +79,27 @@ int mysleep()
 
 }
 
+int addNumbers(int a, int b) {
+      cout<<"addNumbers function thread id = "<<std::this_thread::get_id()<<endl;
+    return a + b;
+}
 
 void packaged_task_example()
 {
-    cout<<"main thread id = "<<std::this_thread::get_id()<<endl;
+    std::cout << "Start of the program thread id = "<<std::this_thread::get_id()<<endl;
+    std::packaged_task<int(int, int)> pt(addNumbers);
+    std::cout << "Created the packaged_task\n";
 
+    std::future<int> fut = pt.get_future();
+    std::cout << "Got the future, but haven't executed the task\n";
 
+    std::thread mythread(std::move(pt), 1, 2);
+    mythread.join();
+    std::cout << "Started the task in a thread\n";
 
-    std::packaged_task<int()> task(mysleep);
+    std::cout << "The result is: " << fut.get() << "\n";
 
-    auto f = task.get_future();
-
-    task(); // invoke the function
-
-    // You have to wait until task returns. Since task calls sleep
-    // you will have to wait at least 1 second.
-    std::cout << "You can see this after 1 second\n";
-
-    // However, f.get() will be available, since task has already finished.
-    std::cout << f.get() << std::endl;
+    std::cout << "End of the program\n";
 }
 
 
